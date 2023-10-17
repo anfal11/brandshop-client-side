@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         Rancho: ["Rancho", "cursive"],
+        Nunito: ['Nunito Sans', 'sans-serif'],
       },
     },
   },
