@@ -43,21 +43,11 @@ const NavBar = () => {
             : 
             isActive ? "border-b-2 text-green-500 border-b-blue-500 font-bold" : ""} 
             to="/login">
-            Log In
+            Sign In
             </NavLink>
             
           </li>
-          <li>
-            <NavLink
-             className={({ isActive, isPending }) => 
-            isPending ? "pending" 
-            : 
-            isActive ? "border-b-2 text-green-500 border-b-blue-500 font-bold" : ""} 
-            to="/profile">
-            User Profile
-            </NavLink>
-          
-          </li>
+
     
         </>
       );
