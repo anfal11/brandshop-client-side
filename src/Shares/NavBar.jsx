@@ -21,7 +21,7 @@ const NavBar = () => {
             isPending ? "pending" 
             : 
             isActive ? "border-b-2 text-green-500 border-b-blue-500 font-bold" : ""} 
-            to="/register">
+            to="/addProduct">
             Add Product 
             </NavLink>
           </li>
@@ -31,7 +31,7 @@ const NavBar = () => {
             isPending ? "pending" 
             : 
             isActive ? "border-b-2 text-green-500 border-b-blue-500 font-bold" : ""} 
-            to="/about">
+            to="/myCart">
             My Cart
             </NavLink>
           </li>
@@ -42,7 +42,7 @@ const NavBar = () => {
             isPending ? "pending" 
             : 
             isActive ? "border-b-2 text-green-500 border-b-blue-500 font-bold" : ""} 
-            to="/gallery">
+            to="/login">
             Log In
             </NavLink>
             

@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 bg-base-200 text-base-content mt-10">
   <nav>
     <header className="footer-title">Services</header> 
     <a className="link link-hover">Branding</a> 
@@ -31,8 +31,8 @@ const Footer = () => {
         <span className="label-text">Enter your email address</span>
       </label> 
       <div className="relative">
-        <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" /> 
-        <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+        <input type="text" placeholder="username@site.com" className="input input-bordered md:w-full pr-16" /> 
+        <button className="btn btn-primary absolute top-0 right-12 md:right-0 rounded-l-none">Subscribe</button>
       </div>
     </fieldset>
   </form>

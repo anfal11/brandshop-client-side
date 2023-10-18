@@ -2,6 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import Root from "./Root";
+import AddProduct from "../Pages/AddProduct";
+import MyCart from "../Pages/MyCart";
+import Login from "../Components/Login";
+import Register from "../Components/Register";
+import UserProfile from "../Components/UserProfile";
 
 
 const Router = createBrowserRouter([
@@ -13,9 +18,27 @@ const Router = createBrowserRouter([
         {
             path: "/",
             element: <Home />,
+            loader: () => fetch("http://localhost:5000/brand")
         },
         {
-
+            path: "/addProduct",
+            element: <AddProduct />,
+        },
+        {
+            path: "/myCart",
+            element: <MyCart />,
+        },
+        {
+            path: "/login",
+            element: <Login />,
+        },
+        {
+            path: "/register",
+            element: <Register />,
+        },
+        {
+            path: "/profile",
+            element: <UserProfile />,
         },
     ]
     },
