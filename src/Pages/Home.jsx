@@ -60,6 +60,7 @@ const Home = () => {
       {/* Brand names */}
 
       <div>
+      <h2 className="text-center font-bold text-3xl underline my-5 text-gray-500"> Brands </h2>
       <BrandNames />
       </div>
       
