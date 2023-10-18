@@ -10,7 +10,7 @@ const BrandNames = () => {
     return (
         <div>
          
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 cursor-pointer">
         {
             brandLoader.map((brand) => (
             <div key={brand._id} className="card mx-4 bg-base-100 shadow-xl image-full">
