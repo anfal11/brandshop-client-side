@@ -7,6 +7,7 @@ import MyCart from "../Pages/MyCart";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import BrandWiseProduct from "../Components/BrandWiseProduct";
+import UpdateProduct from "../Components/UpdateProduct";
 
 
 
@@ -43,6 +44,11 @@ const Router = createBrowserRouter([
             element: <BrandWiseProduct />,
             // loader: ({params}) => fetch(`http://localhost:5000/addProduct/${params.brand}`)
             loader: ({params}) => fetch(`http://localhost:5000/addProduct/${params.brand}`)
+        },
+        {
+            path: "/updateProducts/:id",
+            element: <UpdateProduct />,
+            loader: ({params}) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
         }
     ]
     },

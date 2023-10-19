@@ -33,6 +33,7 @@ const AddProduct = () => {
                     'Product Added Successfully',
                     'success'
                   )
+                  window.location.pathname = "/";
             }
         })
     }
@@ -42,8 +43,8 @@ const AddProduct = () => {
     <div className="max-w-[1320px] mx-auto">
 
 
-                      <div className="bg-[#F4F3F0] rounded mt-32 mb-32 pb-16">
-            <h1 className="font-Rancho text-6xl text-center">Add products</h1>
+                      <div className="bg-[#d0d8e4] rounded mt-32 mb-32 pb-16">
+            <h1 className="font-Rancho text-6xl text-center pt-10">Add products</h1>
             <p className="font-Raleway mt-8 p-4 lg:px-48 mb-8 text-lg text-center">
               It is a long established fact that a reader will be distraceted by the
               readable content of a page when looking at its layout. The point of
@@ -180,7 +181,7 @@ const AddProduct = () => {
                  {/* submit button */}
     
                  <div className="flex justify-center">
-                    <input type="submit" value='Add Products' className="btn bg-[#D2B48C] font-Rancho text-2xl mt-6 md:w-[300px] lg:w-[740px] xl:w-[1000px] border-black" />
+                    <input type="submit" value='Add Products' className="btn bg-[#9ad28c] font-Rancho text-2xl mt-6 md:w-[300px] lg:w-[740px] xl:w-[1000px] border-black" />
                  </div>
     
     
