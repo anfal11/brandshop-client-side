@@ -15,7 +15,7 @@ const Home = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-7xl mx-auto p-4">
             <p className="text-base md:text-xl lg:text-3xl mt-64 md:mt-80 lg:text-center">
-              <span className="drop-shadow-lg font-medium ml-10 text-center">
+              <span className="drop-shadow-lg font-bold ml-10 text-center">
                 <span className="text-gray-200">Buy your favorite</span>{" "}
                 <span className="text-orange-700">gadgets here...</span>
               </span>{" "}

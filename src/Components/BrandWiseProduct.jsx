@@ -10,7 +10,10 @@ const BrandWiseProduct = () => {
       <div className="my-20">advertisemnt</div>
       {loader.length === 0 && (
         <div className="text-center font-bold text-3xl my-5 text-gray-500">
-          No Product Found
+        <div className="flex justify-center">
+        <img className="w-96" src="https://i.ibb.co/NndXNGV/round-cross-mark-symbol-with-transparent-background-free-png.png" alt="" />
+        </div>
+          No Product Found Here
         </div>
       )}
       <div>
@@ -45,9 +48,11 @@ const BrandWiseProduct = () => {
                       Rating: {data.rating}★
                     </h2>
                     <div className="flex justify-center gap-5">
+                      <Link to={`/detailsPage/${data._id}`}>
                       <button className="p-2 px-6 bg-green-500 text-white rounded-md hover:bg-green-600">
                         Details
                       </button>
+                      </Link>
                       <Link to={`/updateProducts/${data._id}`}>
 
                       <button className="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">
