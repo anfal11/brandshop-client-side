@@ -1,9 +1,12 @@
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
+import { useContext } from "react";
 
 const DetailsPage = () => {
   const loader = useLoaderData();
   console.log(loader);
+  const {user} = useContext(AuthContext);
 
   const handleAddToCart = async () => {
     try {
@@ -52,7 +55,7 @@ const DetailsPage = () => {
                   </div>
                 </div>
                {/* `/myCart/${loader._id}` */}
-      <input onClick={handleAddToCart} value='Add to Cart' type="submit" className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-purple-700 hover:bg-purple-600 font-bold text-white md:text-lg rounded-lg shadow-md"/>
+      <input onClick={user && handleAddToCart} value='Add to Cart' type="submit" className="cursor-pointer mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-purple-700 hover:bg-purple-600 font-bold text-white md:text-lg rounded-lg shadow-md"/>
        
       
  

@@ -2,12 +2,49 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const BrandWiseProduct = () => {
   const loader = useLoaderData();
-  //   console.log(loader);
 
+ 
 
   return (
-    <div>
-      <div className="my-20">advertisemnt</div>
+    <div className="max-w-7xl mx-auto">
+
+{
+   <>
+  {loader.length > 0 && (
+    <div className="carousel w-full">
+  <div id="slide1" className="carousel-item relative w-full">
+    <img src="https://i.ibb.co/fN8pgBP/Whats-App-Image-2023-10-20-at-11-07-26-PM-1.jpg" className="w-full h-[500px]" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide4" className="btn btn-circle">❮</a> 
+      <a href="#slide2" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide2" className="carousel-item relative w-full">
+    <img src="https://i.ibb.co/SN6mpqh/Whats-App-Image-2023-10-20-at-11-07-26-PM.jpg" className="w-full h-[500px]" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide1" className="btn btn-circle">❮</a> 
+      <a href="#slide3" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide3" className="carousel-item relative w-full">
+    <img src="https://i.ibb.co/Y7ZFwFF/Whats-App-Image-2023-10-20-at-11-07-24-PM.jpg" className="w-full h-[500px]" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide2" className="btn btn-circle">❮</a> 
+      <a href="#slide4" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+
+</div>
+      )}
+  </>
+}
+  
+
+      {/* <img src="https://i.ibb.co/fN8pgBP/Whats-App-Image-2023-10-20-at-11-07-26-PM-1.jpg" alt="" />
+      <img src="https://i.ibb.co/SN6mpqh/Whats-App-Image-2023-10-20-at-11-07-26-PM.jpg" alt="" />
+      <img src="https://i.ibb.co/Y7ZFwFF/Whats-App-Image-2023-10-20-at-11-07-24-PM.jpg" alt="" /> */}
+      
+     
       {loader.length === 0 && (
         <div className="text-center font-bold text-3xl my-5 text-gray-500">
         <div className="flex justify-center">
