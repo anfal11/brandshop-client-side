@@ -134,10 +134,10 @@ const NavBar = () => {
           
           <Link
             to="/"
-            className="relative text-base md:text-xl hidden md:block"
+            className="relative text-base md:text-xl md:block"
           >
-            <span className="flex items-center gap-3 font-bold font-Rancho text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-green-500 to-blue-600">
-            <img className="w-14 rounded-full" src="https://i.ibb.co/WHMxydj/20231018-181707-0000.png" alt="" />
+            <span className="flex items-center gap-3 font-bold font-Rancho text-xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-green-500 to-blue-600">
+            <img className="w-12 md:w-14 rounded-full" src="https://i.ibb.co/WHMxydj/20231018-181707-0000.png" alt="" />
               Smart TECH 
             </span>
           </Link>

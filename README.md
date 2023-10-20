@@ -1,4 +1,4 @@
-* Live Link: https://brand-shop-client-side-rbnhjk4f9-anfal11.vercel.app/
+* Live Link: brand-shop-client-side.vercel.app
 
 * Functionality of this BRAND SHOP Website: 
 
