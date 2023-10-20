@@ -3,14 +3,12 @@ import Home from "../Pages/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import Root from "./Root";
 import AddProduct from "../Pages/AddProduct";
-import MyCart from "../Pages/MyCart";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import BrandWiseProduct from "../Components/BrandWiseProduct";
 import UpdateProduct from "../Components/UpdateProduct";
 import DetailsPage from "../Pages/DetailsPage";
-
-
+import MyCart from "../Pages/MyCart";
 
 
 const Router = createBrowserRouter([
@@ -31,6 +29,8 @@ const Router = createBrowserRouter([
         {
             path: "/myCart",
             element: <MyCart />,
+            // loader: ({params}) => fetch(`http://localhost:5000/myCart/${params.id}`)
+            loader: () => fetch(`http://localhost:5000/myCart`)
         },
         {
             path: "/login",
