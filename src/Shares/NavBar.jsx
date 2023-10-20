@@ -1,7 +1,34 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import pic from "../assets/user.png";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [userProfile, setUserProfile] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+    if (user) {
+      setUserProfile({
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+      });
+    }
+  }, [user]);
+
+  const signOut = () => {
+    logOut()
+    .then(() => {
+      toast.success('user signed out');
+      navigate('/');
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    });
+  }
 
     const navLinks = (
         <>
@@ -16,7 +43,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
+             <NavLink
             className={({ isActive, isPending }) => 
             isPending ? "pending" 
             : 
@@ -24,6 +51,7 @@ const NavBar = () => {
             to="/addProduct">
             Add Product 
             </NavLink>
+            
           </li>
     
           <li>
@@ -34,6 +62,7 @@ const NavBar = () => {
             to="/myCart">
             My Cart
             </NavLink>
+           
           </li>
     
           <li>
@@ -97,7 +126,7 @@ const NavBar = () => {
         </div>
         <div className="navbar-end">
           <div className="avatar">
-          {/* <div className="w-12 mr-3">
+          <div className="w-12 mr-3">
               {
                 user?.email ? (
                 <>
@@ -116,9 +145,9 @@ const NavBar = () => {
                 </>
               )
               }
-            </div> */}
+            </div>
           </div>
-          {/* <div>
+          <div>
             {
               user?.email ? <div><h1 className="text-base inline mr-3">{userProfile?.displayName}</h1> <button className="font-bold" onClick={signOut}>Log Out</button></div>
               :
@@ -126,7 +155,7 @@ const NavBar = () => {
                <button>Log In</button>
             </Link>
             }
-          </div> */}
+          </div>
         </div>
       </div>
         </div>

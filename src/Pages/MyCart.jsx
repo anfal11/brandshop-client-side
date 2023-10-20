@@ -1,34 +1,49 @@
-import toast from "react-hot-toast";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyCart = () => {
-
     const loader = useLoaderData();
-    console.log(loader);
+    
+    const [carts, setCarts] = useState(loader);
+    console.log(carts);
+  
+   const handleDelete = (_id) => {
+    console.log(_id);
 
-    const handleDelete = async (id) => {
-        console.log(id);
-        try {
-            const response = await fetch(`http://localhost:5000/myCart/${id}`, {
-                method: "DELETE",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/myCart/${_id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount === 1) {
+                Swal.fire("Deleted!", "Your Cart has been deleted.", "success");
+                const remainingCart = carts.filter((c) => c._id !== _id);
+                setCarts(remainingCart);
+              } 
             });
-            if (response.ok) {
-                alert("Product Deleted Successfully");
-                window.location.reload();
-            } else {
-                toast.error("Something went wrong");
-            }
-        } catch (error) {
-            console.error("Error deleting product:", error);
-        }
-    };
+      }
+    });
+ };
     return (
         <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10 px-4">
 
         {
-            loader.map( cart => (
+            carts.map( cart => (
                 <div key={cart._id}>
                 <div className="card h-[500px] shadow-lg compact bg-base-100">
                 <figure>
@@ -43,7 +58,7 @@ const MyCart = () => {
                     </div>
                     <div className="justify-end card-actions">
                     {/* deleet button here */}
-                        <input onClick={() => handleDelete(cart._id)} value='delete' type="button" className="badge badge-outline font-bold cursor-pointer badge-accent text-center"/>
+                        <button onClick={() => handleDelete(cart._id)} className="badge badge-outline font-bold cursor-pointer badge-accent text-center"> delete </button>
 
                         <div className="badge badge-outline badge-accent">{cart.price}$</div>
                         <div className="badge badge-outline badge-accent">{cart.rating}★</div>

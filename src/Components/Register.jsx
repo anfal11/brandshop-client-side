@@ -1,7 +1,53 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
+
+    const { createUser , userUpdateProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleRegister = e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const name = form.get('name');
+    const image = form.get('image');
+    const email = form.get('email');
+    const password = form.get('password');
+    
+
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters');
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error('Password must have at least one capital letter');
+      return;
+    }
+    else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
+      toast.error('Password must have at least one special character');
+      return;
+    }
+
+
+    createUser(email, password)
+    .then((res) => {
+      userUpdateProfile(name, image)
+      .then(() => {
+        toast.success('User created successfully', res);
+        navigate('/login');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+      
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    });
+  }
+
     return (
         <div>
             <section className="bg-gray-50 dark:bg-gray-900">
@@ -15,7 +61,7 @@ const Register = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Create and account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6" onSubmit={handleRegister}>
                   <div>
                       <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
                       <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required/>

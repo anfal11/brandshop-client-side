@@ -9,6 +9,7 @@ import BrandWiseProduct from "../Components/BrandWiseProduct";
 import UpdateProduct from "../Components/UpdateProduct";
 import DetailsPage from "../Pages/DetailsPage";
 import MyCart from "../Pages/MyCart";
+import PrivateRoute from "./PrivateRoute";
 
 
 const Router = createBrowserRouter([
@@ -24,12 +25,11 @@ const Router = createBrowserRouter([
         },
         {
             path: "/addProduct",
-            element: <AddProduct />,
+            element: <PrivateRoute><AddProduct /></PrivateRoute>,
         },
         {
             path: "/myCart",
-            element: <MyCart />,
-            // loader: ({params}) => fetch(`http://localhost:5000/myCart/${params.id}`)
+            element: <PrivateRoute><MyCart /></PrivateRoute>,
             loader: () => fetch(`http://localhost:5000/myCart`)
         },
         {
@@ -47,12 +47,12 @@ const Router = createBrowserRouter([
         },
         {
             path: "/updateProducts/:id",
-            element: <UpdateProduct />,
+            element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
         },
         {
             path: "/detailsPage/:id",
-            element: <DetailsPage />,
+            element: <PrivateRoute><DetailsPage /></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
         }
     ]

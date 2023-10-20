@@ -1,12 +1,46 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    signIn(email, password)
+      .then(() => {
+        toast.success("User successfully logged in ");
+        navigate(location?.state ? location?.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+      .then(() => {
+        toast.success("User successfully logged in");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -22,7 +56,7 @@ const Login = () => {
           </p>
 
           <form
-            action=""
+            onSubmit={handleLogin}
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
           >
             <p className="text-center text-lg font-medium">
@@ -31,6 +65,7 @@ const Login = () => {
 
             <div className="relative">
               <input
+                name="email"
                 type="email"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
@@ -51,6 +86,7 @@ const Login = () => {
 
             <div className="relative">
               <input
+                name="password"
                 type={passwordVisible ? "text" : "password"}
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
@@ -100,6 +136,7 @@ const Login = () => {
           </form>
 
           <button
+          onClick={handleGoogleLogin}
               type="submit"
               className="flex items-center justify-center gap-6 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white lg:hover:bg-indigo-700"
             >
