@@ -10,7 +10,7 @@ const DetailsPage = () => {
 
   const handleAddToCart = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/myCart`, {
+      const response = await fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

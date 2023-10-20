@@ -3,6 +3,7 @@ import CustomerReview from "../Components/CustomerReview";
 import BrandNames from "./BrandNames";
 
 const Home = () => {
+
   return (
     <div>
       {/* banner */}

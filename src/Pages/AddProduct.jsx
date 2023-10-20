@@ -17,7 +17,7 @@ const AddProduct = () => {
 
         e.target.reset();
 
-        fetch("http://localhost:5000/addProduct", {
+        fetch("https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/addProduct", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

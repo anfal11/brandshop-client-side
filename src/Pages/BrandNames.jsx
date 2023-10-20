@@ -7,7 +7,7 @@ const BrandNames = () => {
   // console.log(brandLoader.brand_name);
 
   // useEffect(() => {
-  //     fetch(`http://localhost:5000/addProduct/${_id}`, {
+  //     fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/addProduct/${_id}`, {
   //         method: "GET",
   //     })
   //     .then(res => res.json())

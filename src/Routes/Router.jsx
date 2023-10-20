@@ -21,7 +21,7 @@ const Router = createBrowserRouter([
         {
             path: "/",
             element: <Home />,
-            loader: () => fetch("http://localhost:5000/brand"),
+            loader: () => fetch("https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/brand"),
         },
         {
             path: "/addProduct",
@@ -30,7 +30,7 @@ const Router = createBrowserRouter([
         {
             path: "/myCart",
             element: <PrivateRoute><MyCart /></PrivateRoute>,
-            loader: () => fetch(`http://localhost:5000/myCart`)
+            loader: () => fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`)
         },
         {
             path: "/login",
@@ -43,17 +43,17 @@ const Router = createBrowserRouter([
         {
             path: "/brandWise/:brand",
             element: <BrandWiseProduct />,
-            loader: ({params}) => fetch(`http://localhost:5000/addProduct/${params.brand}`)
+            loader: ({params}) => fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/addProduct/${params.brand}`)
         },
         {
             path: "/updateProducts/:id",
-            element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
+            element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+            loader: ({params}) => fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/updateProduct/${params.id}`)
         },
         {
             path: "/detailsPage/:id",
             element: <PrivateRoute><DetailsPage /></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/updateProduct/${params.id}`)
+            loader: ({params}) => fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/updateProduct/${params.id}`)
         }
     ]
     },
