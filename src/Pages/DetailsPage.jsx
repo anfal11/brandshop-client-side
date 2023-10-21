@@ -5,17 +5,21 @@ import { useContext } from "react";
 
 const DetailsPage = () => {
   const loader = useLoaderData();
+  const { brand, description, image, name, price, rating, type  } = loader;
   console.log(loader);
   const {user} = useContext(AuthContext);
+  const userEmail = user?.email;
+  console.log(userEmail);
 
   const handleAddToCart = async () => {
     try {
+      const sendCart = { brand, description, image, name, price, rating, type, userEmail}
       const response = await fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(loader),
+        body: JSON.stringify(sendCart),
       });
       if (response.ok) {
         
@@ -34,24 +38,24 @@ const DetailsPage = () => {
         <article className=" flex flex-wrap md:flex-nowrap shadow-lg mx-auto max-w-3xl group cursor-pointer transform duration-500 hover:-translate-y-1">
           <img
             className="w-full max-h-[400px] object-cover md:w-52"
-            src={loader.image}
-            alt={loader.name}
+            src={image}
+            alt={name}
           />
           <div className="">
             <div className="p-5 pb-10">
               <h1 className="text-2xl font-semibold text-gray-800 mt-4">
-                {loader.name}
+                {name}
               </h1>
               <p className="text-xl text-gray-400 mt-2 leading-relaxed">
-                {loader.description}
+                {description}
               </p>
             </div>
             <div className="bg-blue-50 p-5">
               <div className="sm:flex sm:justify-between">
                 <div>
                   <div className="flex-col-reverse items-center">
-                    <div>Rating: {loader.rating} ★</div>
-                    <div>Brand: {loader.brand}</div>
+                    <div>Rating: {rating} ★</div>
+                    <div>Brand: {brand}</div>
                   </div>
                 </div>
                {/* `/myCart/${loader._id}` */}
