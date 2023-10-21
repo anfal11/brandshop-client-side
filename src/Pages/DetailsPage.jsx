@@ -14,7 +14,7 @@ const DetailsPage = () => {
   const handleAddToCart = () => {
    
       const sendCart = { brand, description, image, name, price, rating, type, userEmail }
-     fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`, {
+     fetch(`https://brand-shop-server-side-fbntgca0j-anfal11.vercel.app/myCart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
