@@ -6,30 +6,29 @@ import { useContext } from "react";
 const DetailsPage = () => {
   const loader = useLoaderData();
   const { brand, description, image, name, price, rating, type  } = loader;
-  console.log(loader);
+
   const {user} = useContext(AuthContext);
   const userEmail = user?.email;
-  console.log(userEmail);
 
-  const handleAddToCart = async () => {
-    try {
-      const sendCart = { brand, description, image, name, price, rating, type, userEmail}
-      const response = await fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`, {
+
+  const handleAddToCart = () => {
+   
+      const sendCart = { brand, description, image, name, price, rating, type, userEmail }
+     fetch(`https://brand-shop-server-side-k045thmoo-anfal11.vercel.app/myCart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(sendCart),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.insertedId){
+          toast.success("Product Added to Cart.");
+        }
       });
-      if (response.ok) {
-        
-        toast.success("Product Added to Cart.");
-      } else {
-        toast.error("Something went wrong.");
-      }
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-    }
+    
   };
 
   return (
@@ -59,7 +58,7 @@ const DetailsPage = () => {
                   </div>
                 </div>
                {/* `/myCart/${loader._id}` */}
-      <input onClick={user && handleAddToCart} value='Add to Cart' type="submit" className="cursor-pointer mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-purple-700 hover:bg-purple-600 font-bold text-white md:text-lg rounded-lg shadow-md"/>
+      <input onClick={handleAddToCart} value='Add to Cart' type="submit" className="cursor-pointer mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-purple-700 hover:bg-purple-600 font-bold text-white md:text-lg rounded-lg shadow-md"/>
        
       
  

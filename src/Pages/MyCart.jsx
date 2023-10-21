@@ -13,7 +13,7 @@ const MyCart = () => {
     const userEmail = user?.email;
  
     useEffect(() => {
-      const filterCart = loader.filter(cart => cart.userEmail === userEmail);
+      const filterCart = loader.filter(cart => cart.userEmail == userEmail);
       setSelectedProduct(filterCart);
   }, [userEmail, loader]);
    
@@ -39,7 +39,7 @@ const MyCart = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              if (data.deletedCount === 1) {
+              if (data.deletedCount > 0) {
                 Swal.fire("Deleted!", "Your Cart has been deleted.", "success");
                 const remainingCart = setProduct.filter((c) => c._id !== _id);
                 setSelectedProduct(remainingCart);
